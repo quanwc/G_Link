@@ -23,7 +23,6 @@ public class NodeUtil {
 
         Node head = null; //头节点
         Node t = null; // 方便挂链
-
         for (int i=0; i<arr.length; ++i) {
             Node p = new Node(arr[i], null);
             if (i ==0) {
@@ -74,7 +73,7 @@ public class NodeUtil {
 
 
     /**
-     * 释放单向链表
+     * 释放单向链表，即就是：将链表节点赋值为null
      * @param head
      * @return 链表的头节点
      */
@@ -95,6 +94,28 @@ public class NodeUtil {
 
 
     /**
+     * 测试链表是否创建成功：
+     *      通过data域的值是否相等来判断
+     * @param head 链表头节点
+     */
+    public static void testTrue(Node head) {
+        if (head == null) {
+            System.out.println("The Link is empty!");
+            return;
+        }
+
+
+        Node q = head;
+        Node p = q.getNext(); // 先让p指向q的next
+        for (; p.getNext() != null; q = p, p = p.getNext()) {
+            if (p.equals(q.getNext())) {
+                System.out.println(true);
+            }
+        }
+    }
+
+
+    /**
      * 测试：单向链表的创建和输出
      * @param args
      */
@@ -105,8 +126,12 @@ public class NodeUtil {
         // 创建单向链表
         Node head = NodeUtil.createLink(arr);
 
+        // 测试链表是否创建(挂链)成功
+        NodeUtil.testTrue(head);
+
         // 输出单向链表
         NodeUtil.printLink(head);
+
 
         // 释放单向链表
         NodeUtil.clearLink(head);

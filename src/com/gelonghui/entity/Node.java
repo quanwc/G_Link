@@ -15,9 +15,6 @@ public class Node {
      */
     private Node next; // 用来指向下一个节点
 
-    /**zifuc */
-    private String str;
-
 
     /**
      * 无参构造
