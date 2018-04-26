@@ -11,8 +11,9 @@ import com.gelonghui.util.NodeUtil;
 public class InverseLink {
 
     /**
-     * 正向建链
+     * 正向建链，返回的是原链表
      * @param head 链表头节点
+     * @return 逆置后的链表头节点
      */
     public static Node inverse1(Node head) {
         if (head == null) {
@@ -34,6 +35,26 @@ public class InverseLink {
         return head;
     }
 
+    /**
+     * 逆向建链，返回新的链表
+     * @param head 链表头节点
+     * @return 逆置后的链表头节点
+     */
+    public static Node inverse2(Node head) {
+
+        Node p = null; // 当前操作节点
+        Node h1 = null; //新的
+
+        while (head != null) {
+            p = head;
+            head = head.getNext();
+            p.setNext(h1);
+            h1 = p; // h1前移，最后h1刚好指向head头节点
+        }
+
+        return h1;
+    }
+
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{10, 20, 30, 40, 50, 60};
 
@@ -41,7 +62,8 @@ public class InverseLink {
         Node head = NodeUtil.createLink(arr);
 
         // 逆置单向链表
-        head = inverse1(head);
+        //head = inverse1(head);
+        head = inverse2(head);
 
         // 输出单向链表
         NodeUtil.printLink(head);

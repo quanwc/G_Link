@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 /**
  * 设head指向一个非空单向链表
+ *
  * 要求：
  * 		逆向输出链表节点数据域的值
  *
@@ -20,7 +21,7 @@ import java.util.LinkedList;
  * Created by quanwenchao
  * 2018/4/24 20:03:57
  */
-public class ReversePrintLink {
+public class PrintLinkReverse {
 
     /**
      * 辅助栈
@@ -49,7 +50,9 @@ public class ReversePrintLink {
 
 
     /**
-     * 递归
+     * 递归：
+     *      递归在本质上就是栈
+     *      每访问到一个节点的时候，先递归输出它后面的节点，在输出该节点本身
      * @param head 链表头节点
      */
     public static void print2(Node head) {
@@ -83,32 +86,9 @@ public class ReversePrintLink {
     }
 
 
-    ///**
-    // * 逆置单向链表
-    // * @param head 链表头节点
-    // */
-    //public static Node inverseLink(Node head) {
-    //    if (head == null) {
-    //        System.out.println("The Link is empty!");
-    //        return null;
-    //    }
-    //
-    //    Node s = null; // 指向链表剩余部分的头节点
-    //    Node p = null; // 遍历链表过程中，指向当前操作的节点
-    //    s = head.getNext();
-    //    head.setNext(null);
-    //    while(s != null) {
-    //        p = s;
-    //        s = s.getNext();
-    //        p.setNext(head);
-    //        head = p;
-    //    }
-    //
-    //    return head;
-    //}
-
     /**
-     * 逆置后输出，会改变链表结构
+     * 逆置链表：
+     *      将链表节点的指针反转过来，改变链表的方向，然后就可以逆向输出了
      * @param head 链表头节点
      */
     public static void print4(Node head) {
