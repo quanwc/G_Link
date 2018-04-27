@@ -83,30 +83,6 @@ public class ReversePrintLink {
     }
 
 
-    ///**
-    // * 逆置单向链表
-    // * @param head 链表头节点
-    // */
-    //public static Node inverseLink(Node head) {
-    //    if (head == null) {
-    //        System.out.println("The Link is empty!");
-    //        return null;
-    //    }
-    //
-    //    Node s = null; // 指向链表剩余部分的头节点
-    //    Node p = null; // 遍历链表过程中，指向当前操作的节点
-    //    s = head.getNext();
-    //    head.setNext(null);
-    //    while(s != null) {
-    //        p = s;
-    //        s = s.getNext();
-    //        p.setNext(head);
-    //        head = p;
-    //    }
-    //
-    //    return head;
-    //}
-
     /**
      * 逆置后输出，会改变链表结构
      * @param head 链表头节点
