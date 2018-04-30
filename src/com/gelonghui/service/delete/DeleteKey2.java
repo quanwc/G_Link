@@ -21,32 +21,29 @@ import java.util.Scanner;
  *      i>： 本质上真正删除的是E节点的下一节点F，因为我们可以很方便的得到要删除节点的下一节点
  *      ii>：把下一个节点的内容复制到需要删除的节点上，覆盖原有的内容，再把下一个节点删除，就相当于把需要删除的节点删除了，某种程度上有偷梁换柱的嫌疑
  *
- *
- *
  * Created by quanwenchao
  * 2018/4/25 18:55:30
  */
 public class DeleteKey2 {
 
     /**
-     *  在O(1)时间删除链表结点
+     * 构建问题，解决问题:
+     *      在删除链表节点的方法deleteKey()中，需要传入"待删除的节点"作为参数
+     *      i>： 我们可以传入key值，key值对应的节点就是待删除节点；不过前提链表key不重复，需要判断key是否在链表中存在
+     *      ii>：在创建链表的时候，就让指针p随机指向链表的某个节点，作为待删除节点
      * @param head 原链表
      * @return 删除节点后的链表
      */
     public static Node deleteKey(Node head, int key) {
         if (head == null) {
-            System.out.println("The Link is empty!");
-            return null;
+            throw new RuntimeException("The Link is empty!");
         }
 
         Node delp = null;
         for (delp = head; delp != null && delp.getData() != key; delp = delp.getNext());
         if (delp == null) { // 在链表中未找到key值
-            System.out.println("Not found key!");
-            return head;
+            throw new RuntimeException("Not found key!");
         }
-
-
 
 
         if (delp.getNext() != null) { // 要删除的节点不是尾节点
@@ -65,10 +62,7 @@ public class DeleteKey2 {
                 p = p.getNext();
             }
             p.setNext(null);
-            //delp = null;
         }
-
-
 
         return head;
     }
@@ -95,6 +89,9 @@ public class DeleteKey2 {
         // 输出链表
         System.out.println("after delete link: ");
         NodeUtil.printLink(head);
+
+        // 释放链表
+        NodeUtil.clearLink(head);
 
     }
 
