@@ -23,6 +23,10 @@ public class Node {
 
     }
 
+    public Node(Integer data) {
+        this.data = data;
+    }
+
     /**
      * 有参构造
      */
