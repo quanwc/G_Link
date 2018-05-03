@@ -61,11 +61,16 @@ public class InverseLink {
         // 创建单向链表
         Node head = NodeUtil.createLink(arr);
 
+        // 输出单项链表
+        System.out.println("逆置前: ");
+        NodeUtil.printLink(head);
+
         // 逆置单向链表
         //head = inverse1(head);
         head = inverse2(head);
 
         // 输出单向链表
+        System.out.println("逆置后: ");
         NodeUtil.printLink(head);
 
         // 释放链表
