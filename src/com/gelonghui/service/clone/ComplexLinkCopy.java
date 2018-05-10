@@ -1,10 +1,6 @@
 package com.gelonghui.service.clone;
 
 import com.gelonghui.entity.ComplexNode;
-import com.gelonghui.entity.Node;
-import com.gelonghui.util.NodeUtil;
-
-import java.util.Optional;
 
 /**
  * 复杂链表的复制：
@@ -17,13 +13,53 @@ import java.util.Optional;
 public class ComplexLinkCopy {
 
     /**
-     * 复杂链表的复制
+     * 复杂链表的复制：O(n2)
+     *      step1：复制原始链表上的每一个结点，并用next链接起来；
+     *      step2：设置每个节点的sibling节点。查找每个节点的sibling节点需从头遍历链表，故时间复杂度为O(n2)
+     *
      * @param head 原链表
      * @return 复制后的链表
      */
-    public static ComplexNode copy1(ComplexNode head) {
+    public static ComplexNode clone1(ComplexNode head) {
+
+        // step1：复制原始链表上的每一个结点，并用next链接起来；
+        head = connectLinkNext(head);
+
+        // step2：设置每个节点的sibling节点
+
+
 
         return null;
+    }
+
+
+    /**
+     * 复制原始链表上的每一个结点，并用next链接起来
+     * @param head
+     * @return
+     */
+    public static ComplexNode connectLinkNext(ComplexNode head) {
+
+        if (head == null) {
+            return null;
+        }
+
+        ComplexNode h = null;
+        ComplexNode t = null;
+        ComplexNode loop = null;
+        for (loop = head; loop != null; loop = loop.getNext()) {
+            ComplexNode p = new ComplexNode(loop.getData());
+            p.setNext(null);
+
+            if (loop == head) {
+                h = t = p;
+            } else {
+                t.setNext(p);
+                t = p;
+            }
+        }
+
+        return h;
     }
 
     public static void main(String[] args) {

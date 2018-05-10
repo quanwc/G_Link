@@ -1,7 +1,6 @@
 package com.gelonghui.service.clone;
 
 import com.gelonghui.entity.ComplexNode;
-import com.gelonghui.entity.Node;
 import org.junit.Test;
 
 /**
@@ -46,6 +45,9 @@ public class ComplexLinkCopyTest {
         node5.setSibling(null);
 
 
+        // 复制链表
+        ComplexNode h = ComplexLinkCopy.clone1(node1);
+        System.out.println(h);
     }
 
 }

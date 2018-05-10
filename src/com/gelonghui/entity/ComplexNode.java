@@ -18,6 +18,10 @@ public class ComplexNode {
     private ComplexNode sibling; //兄弟姊妹节点，指向链表中的任一结点或者NULL
 
     // 构造
+    public ComplexNode() {
+
+    }
+
     public ComplexNode(Integer data) {
         this.data = data;
     }
