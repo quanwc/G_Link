@@ -10,7 +10,6 @@ import org.junit.Test;
 public class ComplexLinkCopyTest {
 
     /**
-     * /**
      * 创建复杂链表：
      *
      *       | <- -  - ^
