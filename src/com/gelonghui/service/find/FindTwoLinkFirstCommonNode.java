@@ -19,7 +19,7 @@ import java.util.*;
  *              分别把两个链表的结点放入两个栈里，这样两个链表的尾结点就位于两个栈的栈顶，接下来比较两个栈顶的结点是否相同。
  *          如果相同，则把栈顶弹出接着比较下一个栈顶，直到找到最后一个相同的结点。
  *      3、遍历一次链表
- *          得到两链表长度，并求出两个长度之差 -> 先在长链表上走几步，再同时遍历两链表 -> 得到第一个公共节点
+ *          得到两链表长度，并求出两个长度之差k -> 先在长链表上走k步，再同时遍历两链表 -> 得到第一个公共节点
  *
  * 参考：
  *      http://zhedahht.blog.163.com/blog/static/254111742008053169567/
@@ -89,7 +89,7 @@ public class FindTwoLinkFirstCommonNode {
         if (length2 > length1) {
             lengthDif = length2 - length1;
             pHeadLong = head2;
-            pHeadShort = pHeadShort;
+            pHeadShort =head1;
         }
 
         // 先在长链表上走几步，再同时在两个链表上遍历

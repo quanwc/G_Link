@@ -12,52 +12,75 @@ public class ComplexLinkCopy2 {
 
     /**
      * 根据原链表的每个节点N创建对应的N'，并把N'链接在N的后面
-     * @param head
+     * @param pHead
      * @return
      */
-    public static void cloneNodes(ComplexNode head) {
+    public static ComplexNode cloneNodes(ComplexNode pHead) {
 
 
-        ComplexNode p = head; // 遍历链表
-        while (p != null) {
+        ComplexNode pNode = pHead; // 遍历链表
+        while (pNode != null) {
             ComplexNode pCloned = new ComplexNode();
-            pCloned.setData(p.getData());
-            pCloned.setNext(p.getNext());
+            pCloned.setData(pNode.getData());
+            pCloned.setNext(pNode.getNext());
             pCloned.setSibling(null);
 
-            p.setNext(pCloned);
-            p = pCloned.getNext();
+            pNode.setNext(pCloned);
+            pNode = pCloned.getNext();
         }
 
+        return pHead;
     }
 
 
     /**
      * 设置复制出来的sibling：
      *      如果原链表的节点N的sibling指向S，则它对应的复制节点N'的sibling指向S的下一节点S'
-     * @param head
+     * @param pHead
      */
-    public static void connectSiblingNodes(ComplexNode head) {
-        ComplexNode p = head; // 遍历原链表
-        while (p != null) {
-            ComplexNode pCloned = p.getNext(); // 遍历复制链表
-            if (p.getSibling() != null) {
-                pCloned.setSibling(p.getSibling().getNext());
+    public static ComplexNode connectSiblingNodes(ComplexNode pHead) {
+        ComplexNode pNode = pHead; // 遍历原链表
+        while (pNode != null) {
+            ComplexNode pCloned = pNode.getNext(); // 遍历复制链表
+            if (pNode.getSibling() != null) {
+                pCloned.setSibling(pNode.getSibling().getNext());
             }
-            p = pCloned.getNext();
+            pNode = pCloned.getNext();
         }
+
+        return pHead;
     }
 
 
     /**
      * 把长链表拆分为两个链表：
      *      把奇数位置的节点用next链接起来就是原始链表，把偶数位置的节点用next链接起来就是复制出来的链表
-     * @param head
+     * @param pHead
      * @return
      */
-    public static ComplexNode splitComplexLink(ComplexNode head) {
+    public static ComplexNode splitComplexLink(ComplexNode pHead) {
 
-        return null;
+
+        ComplexNode pNode = pHead; // 遍历原链表
+        ComplexNode pClonedHead = null; // 复制链表的头节点
+        ComplexNode pClonedNode = null; //遍历复制的链表
+
+
+        if (pNode != null) { // 初始化链表指针
+            pClonedNode = pClonedHead = pNode.getNext();
+            pNode.setNext(pClonedNode.getNext());
+            pNode = pNode.getNext();
+        }
+
+        while (pNode != null) {
+            pClonedNode.setNext(pNode.getNext());
+            pClonedHead = pClonedNode.getNext();
+
+            pNode.setNext(pClonedNode.getNext());
+            pNode = pNode.getNext();
+        }
+
+        return pClonedHead;
     }
 
     public static void main(String[] args) {
@@ -97,9 +120,10 @@ public class ComplexLinkCopy2 {
 
 
 
-        cloneNodes(node1);
-        connectSiblingNodes(node1);
-        splitComplexLink(node1);
+        ComplexNode pHead = cloneNodes(node1);
+        pHead = connectSiblingNodes(pHead);
+        ComplexNode pClonedHead = splitComplexLink(pHead);
+        System.out.println(pClonedHead);
 
     }
 

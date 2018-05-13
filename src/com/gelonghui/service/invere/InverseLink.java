@@ -43,7 +43,7 @@ public class InverseLink {
     public static Node inverse2(Node head) {
 
         Node p = null; // 当前操作节点
-        Node h1 = null; //新的
+        Node h1 = null; //新的链表
 
         while (head != null) {
             p = head;
