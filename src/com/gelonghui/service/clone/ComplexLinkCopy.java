@@ -1,12 +1,11 @@
 package com.gelonghui.service.clone;
 
-import com.gelonghui.entity.ComplexNode;
-import com.gelonghui.entity.Node;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.gelonghui.entity.ComplexNode;
 
 /**
  * 复杂链表的复制：

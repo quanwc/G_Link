@@ -26,43 +26,33 @@ public class DeleteDuplicateNodes2 {
             return null;
         }
 
-        Node q = null; // p的前驱
-        Node p = head; // 遍历链表，用来指向当前节点
-        while (p != null) {
-            Node pNext = p.getNext(); // p的下一个节点
+        Node preNode = null; // pNode的前驱
+        Node pNode = head; // 遍历链表，用来指向当前节点
+        while (pNode != null && pNode.getNext() != null) {
+            Node pNext = pNode.getNext(); // pNode的下一个节点
             Boolean needDelete = false; // 表示当前节点是否需要被删除
-            if (p.getData() == pNext.getData()) {
+            if (pNode != null && pNode.getData() == pNext.getData()) {
                 needDelete = true;
             }
 
             if (!needDelete) {
-                q = p;
-                p = p.getNext();
+                preNode = pNode;
+                pNode = pNode.getNext();
             } else {
-                //Integer value = p.getData();
-                //Node delP = p; // 删除节点
-                //
-                //while(delP != null && delP.getData() == value) {
-                //    delP.setNext(pNext.getNext());
-                //
-                //    //delP
-                //    delP = delP.getNext();
-                //    pNext = delP.getNext();
-                //}
-                //if (p == head) {
-                //
-                //} else {
-                //    q.setNext(delP);
-                //}
-                //
-                //p = delP; // p后移
+                Integer value = pNode.getData();
+                Node delP = pNode; // 指向待删除节点
+                while (delP != null && delP.getData() == value) { // while循环结束，pNext指向第一个与pNode不重复的节点，然后q前去直接指上pNext，中间的与pNode重复的节点就会被删除了，不用一个next一个next删除，
+                    pNext = delP.getNext();
+                    delP = pNext;
+                }
 
+                if (preNode == null) { // 处理头节点
+                    head = pNext;
+                } else { // 找到
+                    preNode.setNext(pNext);
+                }
 
-                Integer value = p.getData();
-                for (; pNext != null && pNext.getData() != value; pNext = pNext.getNext());
-                p = pNext;
-                q.setNext(pNext);
-
+                pNode = pNext; // p后移，处理下一个节点
             }
         }
 
@@ -71,7 +61,7 @@ public class DeleteDuplicateNodes2 {
 
     public static void main(String[] args) {
 
-        Integer[] arr = new Integer[]{10, 20, 20, 20, 40};
+        Integer[] arr = new Integer[]{10, 10, 20, 20, 40, 40};
 
         // 创建单向链表
         Node head = NodeUtil.createLink(arr);
