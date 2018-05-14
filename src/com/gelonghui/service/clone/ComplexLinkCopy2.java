@@ -3,6 +3,7 @@ package com.gelonghui.service.clone;
 import com.gelonghui.entity.ComplexNode;
 
 /**
+ * 方法3：
  * Created by quanwenchao
  * 2018/5/11 23:13:26
  */
@@ -17,7 +18,6 @@ public class ComplexLinkCopy2 {
      */
     public static ComplexNode cloneNodes(ComplexNode pHead) {
 
-
         ComplexNode pNode = pHead; // 遍历链表
         while (pNode != null) {
             ComplexNode pCloned = new ComplexNode();
@@ -28,7 +28,6 @@ public class ComplexLinkCopy2 {
             pNode.setNext(pCloned);
             pNode = pCloned.getNext();
         }
-
         return pHead;
     }
 
@@ -74,7 +73,7 @@ public class ComplexLinkCopy2 {
 
         while (pNode != null) {
             pClonedNode.setNext(pNode.getNext());
-            pClonedHead = pClonedNode.getNext();
+            pClonedNode = pClonedNode.getNext();
 
             pNode.setNext(pClonedNode.getNext());
             pNode = pNode.getNext();
@@ -114,6 +113,7 @@ public class ComplexLinkCopy2 {
         node3.setNext(node4);
         node3.setSibling(null);
         node4.setNext(node5);
+        //node4.setSibling(node2);
         node4.setSibling(node2);
         node5.setNext(null);
         node5.setSibling(null);
@@ -123,7 +123,7 @@ public class ComplexLinkCopy2 {
         ComplexNode pHead = cloneNodes(node1);
         pHead = connectSiblingNodes(pHead);
         ComplexNode pClonedHead = splitComplexLink(pHead);
-        System.out.println(pClonedHead);
+        System.out.println("pClonedHead: " + pClonedHead.getData());
 
     }
 
